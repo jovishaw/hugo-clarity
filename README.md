@@ -130,7 +130,7 @@ If you want to contribute a PR, [this is a good overview of that process](https:
 If you prefer not to use Gitpod, you can also test, develop and contribute PRs locally from your computer.
 
 ```bash
-git clone https://github.com/chipzoller/hugo-clarity
+git clone https://github.com/jovishaw/hugo-clarity
 cd hugo-clarity/exampleSite/
 hugo server --themesDir ../..
 ```
@@ -154,11 +154,11 @@ hugo mod init <sitename>
 
 3. Hugo Clarity comes with [`exampleSite` files](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite) prefilled with helpful configuration and sample posts. If you're starting a new Hugo site and don't have any content yet, it's easiest to grab the whole thing:
 ```bash
-wget -O - https://github.com/chipzoller/hugo-clarity/archive/master.tar.gz | tar xz && cp -a hugo-clarity-master/exampleSite/* . && rm -rf hugo-clarity-master && rm -f config.toml
+wget -O - https://github.com/jovishaw/hugo-clarity/archive/master.tar.gz | tar xz && cp -a hugo-clarity-master/exampleSite/* . && rm -rf hugo-clarity-master && rm -f config.toml
 ```
 If you are using PowerShell, paste this instead:
 ```bash
-wget -O - https://github.com/chipzoller/hugo-clarity/archive/master.tar.gz | tar xz -and cp -a hugo-clarity-master/exampleSite/* . -and rm -rf hugo-clarity-master -and rm -f config.toml
+wget -O - https://github.com/jovishaw/hugo-clarity/archive/master.tar.gz | tar xz -and cp -a hugo-clarity-master/exampleSite/* . -and rm -rf hugo-clarity-master -and rm -f config.toml
 ```
 If you do already have a site and don't want to risk overwriting anything, we suggest copying the contents of [`config`](exampleSite/config/) over, as well as replacing your `archetypes/post.md` (if it exists) with [Hugo Clarity's](exampleSite/archetypes/post.md). Then migrate any necessary settings from `<sitename>/config.toml` to `<sitename>/config/_default/config.toml` and remove the original `<sitename>/config.toml` file.
 
@@ -171,7 +171,7 @@ hugo server
 
 If that seems like a lot of setup, it's meant to reduce the pain of pulling in new versions of Hugo Clarity when they are released.
 
-To pull in theme updates, run `hugo mod get -u github.com/chipzoller/hugo-clarity`. You can also update all your Hugo modules with `hugo mod get -u ./...` -- [read more about updating Hugo modules](https://gohugo.io/hugo-modules/use-modules/#update-modules).
+To pull in theme updates, run `hugo mod get -u github.com/jovishaw/hugo-clarity`. You can also update all your Hugo modules with `hugo mod get -u ./...` -- [read more about updating Hugo modules](https://gohugo.io/hugo-modules/use-modules/#update-modules).
 
 > There is [more you can do with hugo modules](https://github.com/rootwork/hugo-module-site), but this will suffice for our use case here.
 
@@ -183,7 +183,7 @@ We assume you've already run `hugo new site <sitename>`, are in the `<sitename>`
 
 1. Run:
 ```bash
-git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
+git submodule add https://github.com/jovishaw/hugo-clarity themes/hugo-clarity
 ```
 
 2. Hugo Clarity comes with [`exampleSite` files](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite) prefilled with helpful configuration and sample posts. If you're starting a new Hugo site and don't have any content yet, it's easiest to grab the whole thing:
