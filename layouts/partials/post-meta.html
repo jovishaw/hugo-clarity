@@ -14,8 +14,16 @@
     </span>
     {{- $scratch.Set "writeSeparator" true }}
   {{- end }}
+  {{- with .Params.author }}
+    <span class="post_author">
+      {{ if ($scratch.Get "writeSeparator") }}&nbsp;·{{ end }}
+      <span>{{ partial "sprite" (dict "icon" "author") }}</span>
+      {{- . }}
+    </span>
+    {{- $scratch.Set "writeSeparator" true }}
+  {{- end }}
   {{- if $showReadTime }}
-    <span class="post_time">{{ if ($scratch.Get "writeSeparator") }} · {{ end }}{{ T "reading_time" . }}</span>
+    <span class="post_time">{{ if ($scratch.Get "writeSeparator") }}&nbsp;· {{ end }}{{ T "reading_time" . }}</span>
     {{- $scratch.Set "writeSeparator" true }}
   {{- end }}
   {{- with .Params.tags -}}
