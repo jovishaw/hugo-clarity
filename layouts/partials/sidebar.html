@@ -3,26 +3,33 @@
   <section class="sidebar_inner">
     <br>
     {{ partial "search/widget" . }}
-    {{- $introDescription := $s.introDescription }}
+    {{- $introDescription := "" }}
+    {{- if .Language.Lang }}
+      {{- $introDescription = index $s.introDescription .Language.Lang }}
+    {{- else }}
+      {{- $introDescription = index $s.introDescription "en" }}
+    {{- end }}
     {{- with .Params.introDescription }}
       {{- $introDescription = . }}
     {{- end }}
     {{- if $introDescription }}
-      {{- $author := $s.Author  }}
+      {{- $author := "" }}
+      {{- if .Language.Lang }}
+        {{- $author = index $s.Author .Language.Lang }}
+      {{- else }}
+        {{- $author = index $s.Author "en" }}
+      {{- end }}
       {{- $showAuthorPhoto := false }}
-      {{- $fullAuthor := reflect.IsMap $author }}
-      {{- if $fullAuthor }}
-        {{-  if $author.photo }}
-          {{- $showAuthorPhoto = true }}
-        {{- end }}
+      {{- if $s.Author.photo }}
+        {{- $showAuthorPhoto = true }}
       {{- end }}
       {{- if $showAuthorPhoto }}
         <div class="author_header">
-          <img src="{{ absURL $author.photo }}" alt="{{ $author.name }} photo">
-          <h2>{{  $author.name }}</h2>
+          <img src="{{ absURL $s.Author.photo }}" alt="{{ $author }} photo">
+          <h2>{{ $author }}</h2>
         </div>
       {{- else }}
-        <h2>{{  if $fullAuthor }}{{ $author.name }}{{ else }}{{ $author }}{{ end }}</h2>
+        <h2>{{ $author }}</h2>
       {{- end }}
       <div class="author_bio">
         {{ markdownify $introDescription }}
@@ -33,12 +40,12 @@
       {{- end }}
     {{- end }}
 
-    {{ if .Site.Params.sidebardisclaimer }}
+    <!-- {{ if .Site.Params.sidebardisclaimer }}
       <div class="sidebardisclaimer">
-        <h2 class="mt-4">Disclaimer</h2>
-        {{ .Site.Params.disclaimerText }}
+        <h2 class="mt-4">{{ T "disclaimer" }}</h2>
+        {{ T "disclaimer_text" }}
       </div>
-    {{ end }}
+    {{ end }} -->
 
     {{- $relatedInSidebar := true }}
     {{- if eq $s.showRelatedInSidebar false }}
