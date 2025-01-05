@@ -52,12 +52,14 @@
       {{ $relatedInSidebar = false }}
     {{- end }}
     {{ if (and ($relatedInSidebar) (isset .Params "series") ) }}
-      {{$related := where .Site.RegularPages ".Params.series" "eq" .Params.series }}
-	    <h2 class="mt-4">{{ T "series_posts" }}</h2>
+      {{- $series := index .Params.series 0 }}
+      {{- $related := where site.Pages "Params.series" "intersect" (slice $series) }}
+      {{- $related = where $related "Kind" "eq" "page" }}
+      <h2 class="mt-4">{{ T "series_posts" }}</h2>
       <ul>
         {{ range $related }}
         <li>
-          <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title | markdownify }}</a>
+          <a href="{{ .RelPermalink }}" class="nav-link" title="{{ .Title }}">{{ .Title | markdownify }}</a>
         </li>
         {{ end }}
       </ul>
