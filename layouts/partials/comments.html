@@ -8,5 +8,8 @@
   {{ if .Site.Params.giscus }}
     {{ template "partials/giscus.html" . }}
   {{ end }}
+  {{ if .Site.Params.isso }}
+    {{ template "partials/isso.html" . }}
+  {{ end }}
   <!-- add custom comments markup here -->
 </div>
